@@ -26,7 +26,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT Order_Date, Order_ID, Title, Item_Subtotal, Item_Quantity, Account_Group FROM amazon_data2 WHERE Item_Tax = '' OR Item_Tax = '0' ORDER BY Order_Date";
+$sql = "SELECT Order_Date, Order_ID, Title, Item_Subtotal, Item_Quantity, Location FROM amazon_data2 WHERE Item_Tax = '' OR Item_Tax = '0' ORDER BY Order_Date";
 $result = $conn->query($sql);
 
 $msg.= "<center><h1>Amazon Sales Tax Report</h1></center>";
@@ -36,7 +36,7 @@ if ($result->num_rows > 0) {
   $msg.= "<table>
   <tr>
     <th>Order Date</th>
-	<th>Account Group</th>
+	<th>Location</th>
     <th>Order Number</th>
     <th>Item Name</th>
 	<th>Item Price</th>
@@ -53,7 +53,7 @@ if ($result->num_rows > 0) {
 	$msg.= " 
 			<tr>
 			<td>".$row["Order_Date"]."</td>
-			<td>".$row["Account_Group"]."</td>
+			<td>".$row["Location"]."</td>
 			<td>".$row["Order_ID"]."</td>
 			<td>".$row["Title"]."</td>
 			<td>".number_format((float)$price, 2, '.', '')."</td>

@@ -26,7 +26,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT Order_Date, Order_ID, Title, Item_Subtotal, Item_Quantity, Location FROM amazon_data2 WHERE Item_Tax = '' OR Item_Tax = '0' ORDER BY Order_Date";
+$sql = "SELECT Order_Date, Order_ID, Title, Item_Subtotal, Item_Quantity, Location FROM amazon_data WHERE Item_Tax = '' OR Item_Tax = '0' ORDER BY Order_Date";
 $result = $conn->query($sql);
 
 $msg.= "<center><h1>Amazon Sales Tax Report</h1></center>";

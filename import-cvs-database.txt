@@ -83,3 +83,6 @@ Seller_City ,
 Seller_State ,
 Seller_ZipCode)
 SET Order_Date = STR_TO_DATE(@Order_Date, '%m/%d/%Y');
+
+
+SELECT Order_Date, Order_ID, Title, Item_Subtotal, Item_Quantity, Location FROM amazon_data WHERE (Item_Tax = '' OR Item_Tax = '0') AND Order_Date between '2021-08-03' and '2021-08-11'  ORDER BY Order_Date

@@ -1,15 +1,17 @@
-LOAD DATA INFILE 'orders_from_amazon.csv' 
-INTO TABLE amazon_data2 
+LOAD DATA INFILE 'Amazon_data.csv' 
+INTO TABLE amazon_data 
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
+(@Order_Date)
+SET Order_Date = STR_TO_DATE(@date_time_variable, '%d-%b-%Y');
 
 
 
 
-LOAD DATA INFILE 'orders_from_amazon.csv'
-INTO TABLE amazon_data2
+LOAD DATA INFILE 'Amazon_data.csv'
+INTO TABLE amazon_data
 FIELDS TERMINATED BY ',' ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS

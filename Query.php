@@ -25,8 +25,8 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-
-$sql = "SELECT Order_Date, Order_ID, Title, Item_Subtotal, Item_Quantity, Location FROM amazon_data WHERE Item_Tax = '' OR Item_Tax = '0' ORDER BY Order_Date";
+//echo $_GET['lastweek']."  ".$_GET['currentday'];
+$sql = "SELECT Order_Date, Order_ID, Title, Item_Subtotal, Item_Quantity, Location FROM amazon_data WHERE (Item_Tax = '' OR Item_Tax = '0') AND Order_Date between '".$_GET['lastweek']."' and '".$_GET['currentday']."'  ORDER BY Order_Date";
 $result = $conn->query($sql);
 
 $msg.= "<center><h1>Amazon Sales Tax Report</h1></center>";
@@ -64,7 +64,7 @@ if ($result->num_rows > 0) {
 	
   }
 } else {
-  echo "0 results";
+  $msg.= "<center><h3>No result</h3></center>";
 }
 $msg.= "</table>";
 
